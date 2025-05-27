@@ -15,7 +15,8 @@ class BUZZER:
                 self.pwm.freq(note)
                 self.pwm.duty(self.duty)
             sleep_ms(wait) #piccola pausa per separare le note
-        
+        self.stop()
+
     def stop(self):
         self.pwm.duty(0)
 
