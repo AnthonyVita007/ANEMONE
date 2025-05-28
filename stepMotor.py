@@ -50,7 +50,7 @@ class StepMotor:
 #serve per regolare la velocità di rotazione
                     sleep(0.001)
                     
-    def rotate_by_day(self, day):
+    def rotate_by_day(self, day, moment):
         day_map = {
             "MON": 1,
             "TUE": 2,
@@ -60,11 +60,18 @@ class StepMotor:
             "SAT": 6,
             "SUN": 7
         }
+
+        moment_map = {
+            "MORNING":1,
+            "AFTERNOON":2,
+            "EVENING":3
+        }
         
         # Ottieni il numero corrispondente al giorno
         d = day_map.get(day.upper(), None)
-        
+        m = moment_map.get(moment.upper(), None)
+
         if d is not None:
-            self.rotate_clockwise(d*45)
+            self.rotate_clockwise(d*45*m)
         else:
-            print("Errore: giorno non valido. Usa MON, TUE, ..., SUN")
+            print("Errore: giorno o momento non valido. Usa MON, TUE, ..., SUN")
