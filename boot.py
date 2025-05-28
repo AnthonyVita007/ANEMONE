@@ -1,19 +1,30 @@
 import network
-import ubinascii
+from machine import Pin
+from time import sleep
+import time
 import machine
+import boot
+import MQTTTopics
+import stepMotor
+import connectionBrokerMQTT
+from Buzzer import *
+from umqtt.simple import MQTTClient
 
-# Rete WiFi simulata su Wokwi
-ssid = 'Wokwi-GUEST'
-password = ''
+class WiFiConnector:
+    def __init__(self, ssid='', password=''):
+        self.ssid = ssid
+        self.password = password
+        self.sta_if = network.WLAN(network.STA_IF)
 
-# Connessione WiFi
-print("Connessione alla rete WiFi in corso...", end="")
-sta_if = network.WLAN(network.STA_IF)
-sta_if.active(True)
-sta_if.connect(ssid, password)
+    def connect(self):
+        print("🔌 Connessione alla rete WiFi in corso...", end="")
+        self.sta_if.active(True)
+        self.sta_if.connect(self.ssid, self.password)
 
-while not sta_if.isconnected():
-    pass  # attende fino alla connessione
+        while not self.sta_if.isconnected():
+            pass  # attende finché non è connesso
 
-print(" Connesso!")
-print(sta_if.ifconfig())
+        print(" ✅ Connesso!")
+        print("📶 Info rete:", self.sta_if.ifconfig())
+        return self.sta_if
+
