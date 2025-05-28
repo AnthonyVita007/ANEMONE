@@ -62,8 +62,6 @@ mqtt = Connector(
     sub_callback=sub_callback
 )
 
-
-
 # Connessione iniziale
 try:
     client = mqtt.connect_and_subscribe()
