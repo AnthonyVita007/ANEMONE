@@ -22,12 +22,7 @@ d.show_image(anemone)
 #s1.rotate_by_day('TUE')
 
 
-# Inizializzazione buzzer 
-
-MELODY = [P,SOL,LA,SI,DOd5,SOL,LA,SI,DOd5,
-         LAb,SIb,DO5,RE5,LAb,SIb,DO5,RE5,
-         LA,SI,DOd5,MIb5,LA,SI,DOd5,MIb5,P,
-         LA,SIb,SI,DO5,DO5,P]
+# Inizializzazione buzzer
 
 buzzer = BUZZER(14, duty=512)
 

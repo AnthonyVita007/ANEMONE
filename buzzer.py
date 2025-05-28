@@ -20,6 +20,7 @@ class BUZZER:
     def stop(self):
         self.pwm.duty(0)
 
+LA3 = 220
 DO = 262
 RE = 294
 MI = 330
@@ -35,3 +36,11 @@ RE5 = 587
 MIb5 = 627
 MI5 = 659
 P = 0 #pausa
+
+MELODY = [MI,FA,SOL,P,FA,MI,RE,P,DO,RE,MI,P,P,
+          MI,FA,SOL,P,FA,MI,RE,P,SOL,LA,SOL,FA,MI,RE,DO,LA3
+          ]
+MELODY2 = [P,SOL,LA,SI,DOd5,SOL,LA,SI,DOd5,
+         LAb,SIb,DO5,RE5,LAb,SIb,DO5,RE5,
+         LA,SI,DOd5,MIb5,LA,SI,DOd5,MIb5,P,
+         LA,SIb,SI,DO5,DO5,P]
