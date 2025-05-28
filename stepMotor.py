@@ -17,6 +17,8 @@ class StepMotor:
             Pin(I3, Pin.OUT),
             Pin(I4, Pin.OUT)
         ]
+        self.last_rotation_degree = 0  # salva ultimi gradi ruotati
+
     
     # Sequenza per rotazione antioraria (puoi invertire se serve orario)
         self.sequence_anticlockwise = [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
@@ -72,6 +74,11 @@ class StepMotor:
         m = moment_map.get(moment.upper(), None)
 
         if d is not None:
-            self.rotate_clockwise(d*45*m)
+            degree = d*45*m+90
+            self.last_rotation_degree = degree
+            self.rotate_clockwise(degree)
         else:
             print("Errore: giorno o momento non valido. Usa MON, TUE, ..., SUN")
+
+    def return_to_home(self):
+        self.rotate_anticlockwise(self.last_rotation_degree)
