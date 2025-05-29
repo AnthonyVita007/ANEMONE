@@ -82,3 +82,4 @@ class StepMotor:
 
     def return_to_home(self):
         self.rotate_anticlockwise(self.last_rotation_degree)
+        self.last_rotation_degree = 0
