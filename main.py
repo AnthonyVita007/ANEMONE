@@ -38,13 +38,10 @@ def sub_callback(topic, msg):
     print("📩 Messaggio ricevuto:", topic, msg) # messaggio da camviare, ricevuto da interfaccia su esp32
     if topic == topic_sub :
         s1.return_to_home()
-        print("tornato a casa")
         giorno,fascia = msg.split("|")
         client.publish(topic_pub,"Promemoria: è ora di prendere la pillola")
-        print("Messaggoi all'utente inviato")
         buzzer.play(MELODY, wait=200)
         s1.rotate_by_day(giorno,fascia)
-        print("Ritornato a casa")
         d.show_text("Preleva pillola") # da aggiustare frase
 
 
@@ -77,13 +74,10 @@ while True:
     # prendere la medicina l'utente. 
     if (ir.value == 0):
         client.publish(topic_pub,"L'utente ha correttamente prelevato la pillola") # messaggio da cabmiare, inviato all'user su interfaccia
-        print("Pillola correttamente prelvata")
         d.show_text("Pillola prelevata") # da aggiustare frase
         sleep(60000)
         client.publish(topic_pub,"Ritorno in posizione di start")
         d.show_text("Ritorno in posizione di start") # da aggiustare frase
         s1.return_to_home
-        print("Ritornato in poiszione di start")
     
-
 
