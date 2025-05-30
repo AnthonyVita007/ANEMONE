@@ -7,24 +7,23 @@ import boot
 import MQTTTopics
 import stepMotor
 import connectionBrokerMQTT
-from Buzzer import *
 from umqtt.simple import MQTTClient
 
 class WiFiConnector:
     def __init__(self, ssid='', password=''):
         self.ssid = ssid
         self.password = password
-        self.sta_if = network.WLAN(network.STA_IF)
+        self.wifi_interface = network.WLAN(network.STA_IF)
 
     def connect(self):
         print("🔌 Connessione alla rete WiFi in corso...", end="")
-        self.sta_if.active(True)
-        self.sta_if.connect(self.ssid, self.password)
+        self.wifi_interface.active(True)
+        self.wifi_interface.connect(self.ssid, self.password)
 
-        while not self.sta_if.isconnected():
+        while not self.wifi_interface.isconnected():
             pass  # attende finché non è connesso
 
         print(" ✅ Connesso!")
-        print("📶 Info rete:", self.sta_if.ifconfig())
-        return self.sta_if
+        print("📶 Info rete:", self.wifi_interface.ifconfig())
+        return self.wifi_interface
 
