@@ -11,7 +11,7 @@ class WiFiConnector:
         self.wifi_interface = network.WLAN(network.STA_IF)
 
     def connect(self, timeout_s=30):
-        print("🔌Connessione alla rete WiFi in corso")
+        print("🔌 Connessione alla rete WiFi in corso")
 
         # spegnimento e riaccensione scheda wifi
         self.wifi_interface.active(False)
@@ -24,8 +24,9 @@ class WiFiConnector:
         while not self.wifi_interface.isconnected():
             if time.time() - start_time > timeout_s:
                 raise Exception("Timeout di connessione Wi-Fi scaduto")
-        
+            time.sleep(1)
+            
         #se supera il while allora si è connesso
         print("\nConnesso!")
         print("Info rete:", self.wifi_interface.ifconfig())
-        return self.wifi_interface
+
