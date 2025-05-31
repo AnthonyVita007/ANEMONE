@@ -32,13 +32,9 @@ led = Led(2)
 
 #-----------------------------------------------------------------------
 #OPERAZIONI INIZIALI
+print('OPERAZIONI INIZIALI')
 display.show_image(anemone)
 buzzer.stop()
-
-#-----------------------------------------------------------------------
-# CONNESSIONE AL WIFI
-wifiConnector = WiFiConnector(ssid='iPhone di Maurizio', password='asdfghjkl')
-wifi_interface = wifiConnector.connect()
 
 #-----------------------------------------------------------------------
 # CONNESSIONE AL BROKER MQTT
