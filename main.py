@@ -2,13 +2,13 @@ import time
 import machine
 from machine import Pin
 from time import sleep
-from stepmotor import StepMotor
+from stepMotor import StepMotor
 from display import Display
 from infrared import Infrared
 from button import Button
-from led import LED
+from led import Led
 from buzzer import *  # include anche le note definite
-from connectionBrokerMQTT import Connector
+from connectionBrokerMQTT import MQTT_manager
 from boot import WiFiConnector
 from umqtt.simple import MQTTClient
 
@@ -22,13 +22,13 @@ anemone = bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x
 step_motor = StepMotor(26,25,33,32)
 
 #buzzer
-buzzer = buzzer(14, duty=512)
+buzzer = Buzzer(14, duty=512)
 
 #infrarosso
-ir = infrared(15)
+ir = Infrared(15)
 
 # led
-led = Pin(2, Pin.OUT)
+led = Led(2)
 
 #-----------------------------------------------------------------------
 #OPERAZIONI INIZIALI
@@ -54,10 +54,10 @@ mqtt_manager.subscribe_to_topic(topic2)
 
 #-----------------------------------------------------------------------
 # SETTAGGIO DELLA FUNZIONE DI CALLBACK
-def callback_function(topic, msg):
+#def callback_function(topic, msg):
     #scrivere la funzione che gestisce i messaggi in arrivo dai topic sottoscritti
 
-mqtt_manager.set_callback(callback_function)
+#mqtt_manager.set_callback(callback_function)
 
 #-----------------------------------------------------------------------
 # LOOP PRINCIPALE

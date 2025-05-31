@@ -1,5 +1,4 @@
 import ubinascii
-import MQTTTopics
 from machine import Pin
 from time import sleep
 import network
@@ -8,7 +7,7 @@ import machine
 import boot
 import stepMotor
 import connectionBrokerMQTT
-from Buzzer import *
+from buzzer import *
 from umqtt.simple import MQTTClient
 
 import ubinascii
@@ -90,3 +89,4 @@ class MQTT_manager:
         print('🔄 Riavvio in corso tra 10 secondi...')
         time.sleep(10)
         machine.reset()
+

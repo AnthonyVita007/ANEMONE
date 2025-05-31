@@ -3,10 +3,7 @@ from machine import Pin
 from time import sleep
 import time
 import machine
-import boot
-import MQTTTopics
 import stepMotor
-import connectionBrokerMQTT
 from umqtt.simple import MQTTClient
 
 class WiFiConnector:
@@ -23,7 +20,8 @@ class WiFiConnector:
         while not self.wifi_interface.isconnected():
             pass  # attende finché non è connesso
 
-        print(" ✅ Connesso!")
-        print("📶 Info rete:", self.wifi_interface.ifconfig())
+        print("Connesso!")
+        print("Info rete:", self.wifi_interface.ifconfig())
         return self.wifi_interface
+
 

@@ -37,3 +37,4 @@ class Display:
     def sleep(self, seconds):
         utime.sleep(seconds)
 
+
