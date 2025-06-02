@@ -66,13 +66,19 @@ class MQTT_manager:
                 self.client.check_msg()
             except Exception as e:
                 print("Errore durante il controllo dei messaggi MQTT:", e)
+                self.connect_to_MQTT_broker()
         else:
             print("Client MQTT non connesso. Impossibile controllare i messaggi")
 
         
     #metodo di reset in caso di errore di connessione
     def restart_and_reconnect(self):
+        self.connect_to_MQTT_broker()
+        '''
         print('Riavvio in 10 secondi...')
         time.sleep(10)
         machine.reset()
+        '''
+
+
 
