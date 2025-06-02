@@ -8,6 +8,12 @@ class StepMotor:
     #dato che una sequenza ha 4 passi, dividiamo per 4
     SEQUENCE_FOR_DEGREE = 2048/(360*4)
 
+    #Dato che ho 8 scompartimenti (1 per giorno + 1 standard), ogni 45 gradi cambio giorno
+    DEGREES_PER_DAY = 45
+
+    # Offset iniziale per partire più avanti rispetto alla posizione standard
+    INITIAL_OFFSET_DEGREES = 90
+
     #COSTRUTTORE
     def __init__(self, I1, I2, I3, I4):
         # Attributi di istanza
@@ -69,12 +75,12 @@ class StepMotor:
             "EVENING":3
         }
         
-        # Ottieni il numero corrispondente al giorno
+        # Ottiene i numeri corrispondenti al giorno e al momento
         d = day_map.get(day.upper(), None)
         m = moment_map.get(moment.upper(), None)
 
         if d is not None:
-            degree = d*45*m+90
+            degree = (d * self.DEGREES_PER_DAY * m) + self.INITIAL_OFFSET_DEGREES
             self.last_rotation_degree = degree
             self.rotate_clockwise(degree)
         else:
