@@ -1,12 +1,6 @@
 import ubinascii
-from machine import Pin
-from time import sleep
-import network
 import time
 import machine
-import boot
-import stepMotor
-import connectionBrokerMQTT
 from buzzer import *
 from umqtt.simple import MQTTClient
 
