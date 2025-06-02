@@ -1,7 +1,7 @@
 from machine import Pin, PWM
 from time import sleep_ms
 
-class BUZZER:
+class Buzzer:
     def __init__(self, sig_pin, duty):
         self.pwm = PWM(Pin(sig_pin, Pin.OUT))
         self.pwm.duty(0) #il buzzer parte "muto"

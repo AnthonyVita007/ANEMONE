@@ -9,16 +9,7 @@ import boot
 import stepMotor
 import connectionBrokerMQTT
 from Buzzer import *
-from umqtt.simple import MQTTClient
-
-import ubinascii
 import machine
-import time
-from umqtt.simple import MQTTClient
-
-import ubinascii
-import machine
-import time
 from umqtt.simple import MQTTClient
 
 class MQTT_manager:
